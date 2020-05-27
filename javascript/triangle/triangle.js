@@ -4,19 +4,43 @@
 //
 
 export class Triangle {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(a, b, c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+    //throw new Error("Remove this statement and implement this function");
+  }
+
+  isViolatingTriangleInequality() {
+    if (this.a > this.b + this.c) return true;
+    if (this.b > this.a + this.c) return true;
+    if (this.c > this.a + this.b) return true;
   }
 
   isEquilateral() {
-    throw new Error("Remove this statement and implement this function");
+    if (this.a !== 0 && this.a === this.b && this.b === this.c) return true;
+    return false;
+    //throw new Error('Remove this statement and implement this function');
   }
 
   isIsosceles() {
-    throw new Error("Remove this statement and implement this function");
+    if (
+      (this.a === this.b || this.a === this.c || this.b === this.c) &&
+      !this.isViolatingTriangleInequality()
+    )
+      return true;
+    return false;
+    //throw new Error('Remove this statement and implement this function');
   }
 
   isScalene() {
-    throw new Error("Remove this statement and implement this function");
+    if (
+      this.a !== this.b &&
+      this.b !== this.c &&
+      !this.isViolatingTriangleInequality()
+    )
+      return true;
+    return false;
+    //throw new Error('Remove this statement and implement this function');
   }
 }
