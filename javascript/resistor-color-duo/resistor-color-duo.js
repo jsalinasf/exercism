@@ -4,21 +4,23 @@
 //
 
 export const decodedValue = (arr) => {
-  // equivalence table
-  const COLORS = {
-    black: 0,
-    brown: 1,
-    red: 2,
-    orange: 3,
-    yellow: 4,
-    green: 5,
-    blue: 6,
-    violet: 7,
-    grey: 8,
-    white: 9,
-  };
-  // remove additional items from the received array
-  arr.splice(2);
-  // decode element, join the resultant array to a string, convert it into a number
-  return parseInt(arr.map((element) => COLORS[element]).join(''));
+  // extract items to decode from the received array
+  const decodeArr = arr.slice(0, 2);
+
+  // decode items, join the resultant array into a string, convert it to number and return it
+  return Number(decodeArr.map((element) => COLORS[element]).join(''));
+};
+
+export const COLORS = {
+  // equivalency chart
+  black: 0,
+  brown: 1,
+  red: 2,
+  orange: 3,
+  yellow: 4,
+  green: 5,
+  blue: 6,
+  violet: 7,
+  grey: 8,
+  white: 9,
 };
