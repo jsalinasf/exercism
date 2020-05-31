@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Protein Translation' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export const translate = (rna) => {
   // initialize array to return
   const protein = [];
@@ -26,7 +21,7 @@ export const translate = (rna) => {
   // iterate array of codons
   for (let i = 0; i < splittedArray.length; i++) {
     let element = splittedArray[i];
-    // does current condo have a match on the equivalency table?
+    // is current condo found on the equivalency table?
     if (TRANSLATION.hasOwnProperty(element)) {
       // is current condo a stop signal?
       if (TRANSLATION[element] === 'STOP') {
@@ -65,5 +60,3 @@ export const TRANSLATION = {
   UGA: 'STOP',
   UAG: 'STOP',
 };
-
-console.log(translate('UAGAUGUAU'));
