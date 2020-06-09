@@ -1,16 +1,24 @@
 export const score = (xp, yp) => {
-  const points = 0;
+  // initialize points to zero
+  let points = 0;
+  // use math "distance formula" to see how far the dart landed from the center
   const distance = Math.sqrt(Math.pow(xp - XC, 2) + Math.pow(yp - YC, 2));
-  console.log(distance);
+  // assign points based on distance
   if (distance <= 1) {
-    return 10;
+    // inner circle
+    points = 10;
   } else if (distance <= 5) {
-    return 5;
+    // middle circle
+    points = 5;
   } else if (distance <= 10) {
-    return 1;
+    // outter circle
+    points = 1;
   } else {
-    return points;
+    // out of target
+    points = 0;
   }
+
+  return points;
 };
 
 // X coordinate for center
