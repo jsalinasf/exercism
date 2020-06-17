@@ -106,10 +106,12 @@ export const convert = (arr, sourceBase, targetBase) => {
   // Converters
   //////////////////
 
+  // From Base 10
   if (sourceBase === 10) {
     returnArr = fromDecimal(arr, targetBase);
   }
 
+  // To Base 10
   if (targetBase === 10) {
     returnArr = toDecimal(arr, sourceBase);
   }
