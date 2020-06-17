@@ -1,7 +1,7 @@
 import { convert } from './all-your-base';
 
 describe('Converter', () => {
-  test('single bit one to decimal', () => {
+  xtest('single bit one to decimal', () => {
     expect(convert([1], 2, 10)).toEqual([1]);
   });
 
@@ -17,7 +17,7 @@ describe('Converter', () => {
     expect(convert([1, 0, 1, 0, 1, 0], 2, 10)).toEqual([4, 2]);
   });
 
-  xtest('decimal to binary', () => {
+  test('decimal to binary', () => {
     expect(convert([4, 2], 10, 2)).toEqual([1, 0, 1, 0, 1, 0]);
   });
 
