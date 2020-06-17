@@ -1,34 +1,7 @@
-//
-// This is only a SKELETON file for the 'All Your Base' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+// all-your-base
 
 export const convert = (arr, sourceBase, targetBase) => {
   let returnArr = [];
-
-  function toDecimal(initialArray, fromBase) {
-    let accumulator = 0;
-    for (let i = 0; i < initialArray.length; i++) {
-      let power = arr.length - 1 - i;
-      let sum = arr[i] * Math.pow(fromBase, power);
-      accumulator += sum;
-    }
-    accumulator = String(accumulator).split('');
-    accumulator = accumulator.map((item) => Number(item));
-    return accumulator;
-  }
-
-  function fromDecimal(initialArray, toBase) {
-    let accumulator = '';
-    let num = Number(initialArray.join(''));
-    while (num > 0) {
-      accumulator += num % toBase;
-      num = Math.trunc(num - num / toBase);
-    }
-    accumulator = accumulator.split('').reverse();
-    accumulator = accumulator.map((item) => Number(item));
-    return accumulator;
-  }
 
   //////////////////
   // Edge Cases
@@ -106,6 +79,30 @@ export const convert = (arr, sourceBase, targetBase) => {
   // Converters
   //////////////////
 
+  function toDecimal(initialArray, fromBase) {
+    let accumulator = 0;
+    for (let i = 0; i < initialArray.length; i++) {
+      let power = arr.length - 1 - i;
+      let sum = arr[i] * Math.pow(fromBase, power);
+      accumulator += sum;
+    }
+    accumulator = String(accumulator).split('');
+    accumulator = accumulator.map((item) => Number(item));
+    return accumulator;
+  }
+
+  function fromDecimal(initialArray, toBase) {
+    let accumulator = [];
+    let num = Number(initialArray.join(''));
+    while (num > 0) {
+      accumulator.push(num % toBase);
+      num = Math.trunc(num / toBase);
+    }
+    accumulator = accumulator.reverse();
+    accumulator = accumulator.map((item) => Number(item));
+    return accumulator;
+  }
+
   // From Base 10
   if (sourceBase === 10) {
     returnArr = fromDecimal(arr, targetBase);
@@ -116,14 +113,14 @@ export const convert = (arr, sourceBase, targetBase) => {
     returnArr = toDecimal(arr, sourceBase);
   }
 
+  // When neither the sourceBase or the targetBase is 10
+  if (sourceBase !== 10 && targetBase !== 10) {
+    // Convert the received array to Base 10 using toDecimal(arr, sourceBase)
+    let tempArr = toDecimal(arr, sourceBase);
+
+    // Using the previous result, call fromDecimal(returnedNumber, targetBase) to the required targetBase
+    returnArr = fromDecimal(tempArr, targetBase);
+  }
+
   return returnArr;
 };
-
-// console.log(convert([1, 1, 1, 1, 1, 1, 1, 1], 2, 10)); //255
-// console.log(convert([1, 1, 1, 0, 1], 2, 10)); // 29
-// console.log(convert([2, 2, 1], 3, 10)); // 25
-// console.log(convert([1], 2, 10)); // 1
-// console.log(convert([1, 0, 1, 0, 1, 0], 2, 10)); // [4,2]
-// console.log(convert([4, 2], 10, 2)); // [1, 0, 1, 0, 1, 0]
-// console.log(convert([5], 10, 2)); // [1, 0, 1]
-// console.log(convert([0], 10, 2)); // [0]
